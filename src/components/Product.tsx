@@ -10,7 +10,7 @@ const Product = ({
   price: number;
 }) => {
   return (
-    <div className="w-fit grid gap-2">
+    <div className="w-fit">
       <div className="border border-product-border bg-product-bg rounded-sm flex justify-center items-center h-fit w-fit p-5">
         <Image
           src={img}
@@ -24,7 +24,7 @@ const Product = ({
         <h2 className="text-wrap font-medium text-base md:text-lg">{name}</h2>
         <p>₦{price}</p>
       </div>
-      <button className="flex justify-center items-center gap-2 w-full border border-product-border py-3 rounded-lg text-sm">
+      <button className="flex justify-center items-center gap-2 w-full border border-product-border h-10 rounded-lg text-sm">
         <TbShoppingBagPlus />
         Add to cart
       </button>
