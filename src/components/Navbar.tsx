@@ -5,10 +5,9 @@ import { useProviderContext } from "@/context/product";
 
 const Navbar = () => {
   const { cartProducts } = useProviderContext();
-  console.log({ cartProducts });
 
   return (
-    <nav className="h-20 md:h-24 w-full bg-blue flex justify-between items-center px-10 fixed top-0">
+    <nav className="h-20 md:h-24 w-full bg-blue flex justify-between items-center px-2 md:px-10 fixed top-0">
       <Image src={Logo} alt="logo" width={80} height={80} />
       <div>
         <span className="flex justify-center items-center p-2 bg-icon-bg rounded-full cursor-pointer relative">

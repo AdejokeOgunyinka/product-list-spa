@@ -39,7 +39,7 @@ const Product = ({ product }: { product: IProduct }) => {
       </div>
       <button
         onClick={() => handleAddToCart(product)}
-        className={`flex justify-center items-center gap-2 w-full border border-product-border h-10 rounded-lg text-sm ${
+        className={`flex justify-center items-center flex-col md:flex-row gap-2 w-full border border-product-border py-2 rounded-lg text-sm ${
           isPartOfCartArray?.length > 0 ? "bg-blue text-white" : "bg-unset"
         }`}
       >

@@ -32,8 +32,9 @@ const ProductsGrid = () => {
   }, [searchQuery, products, sortQuery]);
 
   return (
-    <div className="w-full pt-24 md:pt-40">
-      <div className="w-full flex justify-end gap-2 px-3 md:px-32">
+    <div className="w-full pt-24 md:pt-40 px-5 md:px-10">
+      <h2 className="text-lg font-bold mb-2">All Products</h2>
+      <div className="w-full flex flex-col md:flex-row md:justify-end items-center gap-2">
         <span className="border border-product-border w-48 h-10 p-2 rounded-full flex items-center justify-between">
           <input
             name="product"
@@ -61,7 +62,7 @@ const ProductsGrid = () => {
           </select>
         </div>
       </div>
-      <div className="p-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+      <div className="pt-10 grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
         {filteredProducts?.map((product: IProduct) => (
           <Product product={product} key={product.id} />
         ))}
