@@ -13,7 +13,7 @@ const Navbar = () => {
         <span className="flex justify-center items-center p-2 bg-icon-bg rounded-full cursor-pointer relative">
           <RiShoppingCartLine color="#fff" className="w-5 h-5" />
           {cartProducts?.length > 0 && (
-            <div className="bg-white text-icon-bg rounded-full absolute -bottom-1 -right-1.5 w-3 h-3 text-sm flex justify-center items-center p-2">
+            <div className="bg-white text-icon-bg rounded-full absolute -bottom-1 -right-1.5 w-5 h-5 text-sm flex justify-center items-center p-2">
               {cartProducts?.length}
             </div>
           )}
