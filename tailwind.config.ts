@@ -13,6 +13,7 @@ const config: Config = {
         "icon-bg": "#2059EA",
         "product-border": "#F5F5F5",
         "product-bg": "#FAFAFA",
+        grey: "#F1F1F1",
       },
     },
   },
