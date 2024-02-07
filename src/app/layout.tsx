@@ -1,22 +1,28 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+"use client";
+
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Products List",
-  description: "Productify products list page",
-};
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ProductProvider } from "@/context/product";
+import Navbar from "@/components/Navbar";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const queryClient = new QueryClient();
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <QueryClientProvider client={queryClient}>
+          <ProductProvider>
+            <div className="w-full">
+              <Navbar />
+              {children}
+            </div>
+          </ProductProvider>
+        </QueryClientProvider>
+      </body>
     </html>
   );
 }

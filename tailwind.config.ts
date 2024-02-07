@@ -15,6 +15,12 @@ const config: Config = {
         "product-bg": "#FAFAFA",
         grey: "#F1F1F1",
       },
+      gridTemplateColumns: {
+        product: "repeat(auto-fill, minmax(400px,1fr))",
+      },
+      gridAutoRows: {
+        product: "500px",
+      },
     },
   },
   plugins: [],
