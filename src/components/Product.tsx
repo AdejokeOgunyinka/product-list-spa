@@ -21,25 +21,25 @@ const Product = ({ product }: { product: IProduct }) => {
     }
   };
   return (
-    <div className="w-fit">
-      <div className="border border-product-border bg-product-bg rounded-sm flex justify-center items-center h-fit w-fit p-5">
+    <div className="w-full grid gap-2">
+      <div className="border border-product-border bg-product-bg rounded-sm flex justify-center items-center w-full h-40 md:h-80 relative p-5 py-10">
         <Image
           src={product.image}
           alt="product"
           className="object-cover"
-          width={300}
-          height={300}
+          layout="fill"
+          objectFit="contain"
         />
       </div>
       <div>
         <h2 className="text-wrap font-medium text-base md:text-lg">
           {product.title}
         </h2>
-        <p>₦{product.price}</p>
+        <p className="font-bold">₦{product.price}</p>
       </div>
       <button
         onClick={() => handleAddToCart(product)}
-        className={`flex justify-center items-center flex-col md:flex-row gap-2 w-full border border-product-border py-2 rounded-lg text-sm ${
+        className={`flex justify-center items-center flex-col md:flex-row gap-2 w-full border border-product-border h-20 md:h-12 rounded-lg text-sm ${
           isPartOfCartArray?.length > 0 ? "bg-blue text-white" : "bg-unset"
         }`}
       >
