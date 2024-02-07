@@ -1,19 +1,30 @@
 import Image from "next/image";
 import { TbShoppingBagPlus } from "react-icons/tb";
-const Product = ({
-  name,
-  img,
-  price,
-}: {
-  name: string;
-  img: string;
-  price: number;
-}) => {
+import { useProviderContext } from "@/context/product";
+import { IProduct } from "@/types/product";
+const Product = ({ product }: { product: IProduct }) => {
+  const { cartProducts, setCartProducts } = useProviderContext();
+
+  const isPartOfCartArray = cartProducts?.filter(
+    (cartProduct: IProduct) => cartProduct?.id === product?.id
+  );
+
+  const handleAddToCart = (product: IProduct) => {
+    if (isPartOfCartArray?.length > 0) {
+      setCartProducts(
+        cartProducts.filter(
+          (cartProduct: IProduct) => cartProduct?.id !== product?.id
+        )
+      );
+    } else {
+      setCartProducts([...cartProducts, product]);
+    }
+  };
   return (
     <div className="w-fit">
       <div className="border border-product-border bg-product-bg rounded-sm flex justify-center items-center h-fit w-fit p-5">
         <Image
-          src={img}
+          src={product.image}
           alt="product"
           className="object-cover"
           width={300}
@@ -21,12 +32,19 @@ const Product = ({
         />
       </div>
       <div>
-        <h2 className="text-wrap font-medium text-base md:text-lg">{name}</h2>
-        <p>₦{price}</p>
+        <h2 className="text-wrap font-medium text-base md:text-lg">
+          {product.title}
+        </h2>
+        <p>₦{product.price}</p>
       </div>
-      <button className="flex justify-center items-center gap-2 w-full border border-product-border h-10 rounded-lg text-sm">
+      <button
+        onClick={() => handleAddToCart(product)}
+        className={`flex justify-center items-center gap-2 w-full border border-product-border h-10 rounded-lg text-sm ${
+          isPartOfCartArray?.length > 0 ? "bg-blue text-white" : "bg-unset"
+        }`}
+      >
         <TbShoppingBagPlus />
-        Add to cart
+        {isPartOfCartArray?.length > 0 ? "Remove from cart" : "Add to cart"}
       </button>
     </div>
   );
