@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <main className="w-full">
       <div className="w-full pt-24 md:pt-40 px-5 md:px-10 grid gap-1">
-        <h2 className="text-lg font-bold">All Products</h2>
+        <h2 className="text-xl md:text-3xl font-bold">All Products</h2>
         <div className="w-full flex flex-col md:flex-row md:justify-end items-center gap-2">
           <span className="border border-product-border w-48 h-10 p-2 rounded-full flex items-center justify-between">
             <input
