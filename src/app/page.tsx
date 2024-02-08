@@ -1,12 +1,14 @@
 "use client";
+import { useEffect, useState } from "react";
+import { IoSearch } from "react-icons/io5";
 import Product from "@/components/Product";
 import { useGetProducts } from "@/lib/queries/useProduct";
 import { IProduct } from "@/types/product";
-import { useEffect, useState } from "react";
-import { IoSearch } from "react-icons/io5";
+import LoadingState from "@/components/LoadingState";
+import { EmptyState } from "@/components/EmptyState";
 
 export default function Home() {
-  const { data: products } = useGetProducts();
+  const { data: products, isLoading: isLoadingProducts } = useGetProducts();
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,6 +33,7 @@ export default function Home() {
       setFilteredProducts(products);
     }
   }, [searchQuery, products, sortQuery]);
+
   return (
     <main className="w-full">
       <div className="w-full pt-24 md:pt-40 px-5 md:px-10 grid gap-1">
@@ -63,11 +66,17 @@ export default function Home() {
             </select>
           </div>
         </div>
-        <div className="py-10 grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
-          {filteredProducts?.map((product: IProduct) => (
-            <Product product={product} key={product.id} />
-          ))}
-        </div>
+        {isLoadingProducts ? (
+          <LoadingState />
+        ) : filteredProducts?.length === 0 ? (
+          <EmptyState title="No product available!" />
+        ) : (
+          <div className="py-10 grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+            {filteredProducts?.map((product: IProduct) => (
+              <Product product={product} key={product.id} />
+            ))}
+          </div>
+        )}
       </div>
     </main>
   );
