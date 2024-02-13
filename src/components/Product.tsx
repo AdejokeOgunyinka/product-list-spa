@@ -29,6 +29,8 @@ const Product = ({ product }: { product: IProduct }) => {
           className="object-cover"
           layout="fill"
           objectFit="contain"
+          sizes="100%"
+          priority
         />
       </div>
       <div>
